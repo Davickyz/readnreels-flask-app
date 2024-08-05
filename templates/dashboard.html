@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="shortcut icon" href="../static/images/logo.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="../static/dashboard.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <!-- Left Aside -->
+      <aside>
+        <!-- reednreels logo -->
+        <div class="logo">
+          <img src="../static/images/logo.svg" alt="logo" />
+          <p>READnREELS</p>
+        </div>
+
+        <!-- Navigation Panel-->
+        <nav>
+          <a class="nav-links" href="">
+            <img src="../static/images/home (1).png" alt="">
+            <p>Home</p>
+          </a>
+          <hr>
+          <a class="nav-links">
+            <img src="../static/images/documentary.png" alt="">
+            <p>Explore</p>
+          </a>
+  
+          <a class="nav-links">
+            <img src="../static/images/badge.png" alt="">
+            <p>Top Picks</p>
+          </a>
+  
+          <a class="nav-links">
+            <img src="../static/images/document.png" alt="">
+            <p>My List</p>
+          </a>
+          <hr>
+          <a class="nav-links">
+            <img src="../static/images/settings.png" alt="">
+            <p>Settings</p>
+          </a>
+          <a class="nav-links"style="color: black;text-decoration: none;"href="https://drive.usercontent.google.com/download?id=1lRWljT-S3TBqYsET2CrM6yIvOuCco8n2&export=download&authuser=0&confirm=t&uuid=56178ba6-1559-48c5-b167-a1ef544888ac&at=APZUnTVZVhc_UYXKLTJu6fxmAdF4:1722550879891">
+            <img src="../static/images/download_icon.png" alt="">
+            <p>Download now</p>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Welcome and Search Bar -->
+      <section class="head-bar">
+        <!-- User Name -->
+        <div class="welcome-text">
+          Welcome <span>
+            {{user_name}}
+
+<!-- 
+            {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          {% for message in messages %}
+            <p>{{message}}</p>
+          {% endfor %}
+      {% endif %}
+    {% endwith %} -->
+          </span>
+          <img src="../static/images/wave.png" alt="" />
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+          <form action="{{ url_for('search') }}" method="get">
+            <input type="text" name="query" placeholder="Search for a movie">
+            <button type="submit">Search</button>
+          </form>
+          <!-- <input type="text" placeholder="Search" /> -->
+        </div>
+      </section>
+    </header>
+
+    <!-- Right Aside -->
+    <aside class="right-aside">
+      <h3>Today's Pick For You</h3>
+
+      <!-- Pick Preview -->
+      <div>
+        <img
+          class="pick-preview"
+          src="../static/images/Avengers_ Infinity War  Posters.jpg"
+          alt=""
+        />
+
+        <h4>Avengers Infinity War</h4>
+        <div class="yr-rating">
+          <h5>2020</h5>
+          <img class="rating" src="../static/images/rating-50.png" alt="" />
+        </div>
+      </div>
+    </aside>
+               
+               <!-- films -->
+                <div class="picks">
+               {% for movie in movies %}
+               <div class="preview-card">
+                <img class="picks-img" src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }} poster">
+                 <p class="item-title">{{ movie.title }}</p>
+               </div>
+             {% endfor %}
+            </div>
+
+    <!-- books -->
+
+    <section class="books">
+      <h1>READ YOUR FAVOURITE BOOKS</h1>
+      <a href="{{url_for('books')}}" class="btn">GET STARTED </a>
+      </section>
+    <footer></footer>
+  </body>
+</html>

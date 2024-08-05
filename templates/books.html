@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books</title>
+  <link rel="stylesheet" href="../static/books.css">
+</head>
+<body>
+    <header>
+      <h1>Books</h1>
+      <form method="post">
+          <input class="input-text" type="text" name="query_books" placeholder="Search for books" value="{{ query_books }}">
+          <input class="search-btn" type="submit" value="Search">
+      </form>
+    </header>
+    <div class="content-card">
+      {% for book in books %}
+        <div class="card">
+          
+          {% if book.cover_id %}
+            <img src="https://covers.openlibrary.org/b/id/{{ book.cover_id }}-M.jpg" alt="{{ book.title }} cover">
+            <h2>{{ book.title }}</h2>
+          {% else %}
+            <p>No cover image available</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books</title>
+</head>
+<body>
+  <h1>Books</h1>
+  <ul>
+    {% for book in books %}
+      <li>
+        <h2>{{ book.title }}</h2>
+        {% if book.cover_id %}
+          <img src="https://covers.openlibrary.org/b/id/{{ book.cover_id }}-M.jpg" alt="{{ book.title }} cover">
+        {% else %}
+          <p>No cover image available</p>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html> -->
